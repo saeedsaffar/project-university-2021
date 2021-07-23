@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{block.super}} | ثبت نام
+{% endblock title %}
+
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+
+    <div
+        class="p-5 text-center bg-image"
+        style="
+        background-image: url('{% static 'media/bg1.jpg' %}');
+        height: 100%;
+        "
+    >
+    <div class="rounded-lg mask" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="d-flex justify-content-center align-items-center h-110">
+
+        <form class="d-felx container w-50 justify-content-center validate-form" action="/signup/" method="post">
+            {% if error_pass %}
+            <div class="container">
+                <div class="alert alert-danger alert-dismissible fade show text-right" role="alert" dir="rtl">
+                گذرواژه و تکرار گذرواژه یکسان نیستند
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </div>
+        {% elif error_user %}
+        <div class="container">
+                <div class="alert alert-danger alert-dismissible fade show text-right" role="alert" dir="rtl">
+                نام کاربری شما در سیستم موجود است
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </div>
+        {% elif error_null %}
+        <div class="container">
+                <div class="alert alert-danger alert-dismissible fade show text-right" role="alert" dir="rtl">
+                فیلد خالی را پر کنید
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </div>
+        {% endif %}
+            
+            <h1 class="mb-3 text-white">ثبت نام</h1>
+                    {% csrf_token %}
+					<div class="validate-input" data-validate="First Name is required">
+						<label class="my-2 text-white">نام شما</label>
+						<input name="first_name" class="form-control" type="text" placeholder="نام خود را وارد کنید">
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Last Name is required">
+						<label class="my-2 text-white">نام خانوادگی شما</label>
+						<input name="last_name" class="form-control" type="text" placeholder="نام خانوادگی خود را وارد کنید">
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Username is required">
+						<label class="my-2 text-white">نام کاربری</label>
+						<input name="username" class="form-control" type="text" placeholder="یک نام کاربری وارد کنید">
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Email is required">
+						<label class="my-2 text-white">ایمیل</label>
+						<input name="email" class="form-control" type="email" placeholder="ایمیل شما">
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<label class="my-2 text-white">رمز عبور</label>
+						<input class="form-control" type="password" name="password1" placeholder="رمز عبورتان را وارد کنید">
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password repeat is required">
+						<label class="my-2 text-white">تایید رمز عبور</label>
+						<input class="form-control" type="password" name="password2" placeholder="رمز عبورتان را وارد کنید">
+					</div>
+
+					<div class="m-4 text-left">
+						<button class="btn btn-primary" type="submit" name="submit">
+							ثبت نام کنید
+						</button>
+					</div>
+                    <a class="nav-link active text-white" href="/">بازگشت به صفحه اصلی سایت</a>
+				</form>
+
+
+    </div>
+    </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: iransansdn;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/eot/IRANSans_Bold.eot");
+  src: url("../fonts/eot/IRANSans_Bold.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iransansdn;
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/eot/IRANSans_Light.eot");
+  src: url("../fonts/eot/IRANSans_Light.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: iransansdn;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/eot/IRANSans.eot");
+  src: url("../fonts/eot/IRANSans.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/eot/IRANSans_Black.eot");
+  src: url("../fonts/eot/IRANSans_Black.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/eot/IRANSans_Bold.eot");
+  src: url("../fonts/eot/IRANSans_Bold.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/eot/IRANSans_Medium.eot");
+  src: url("../fonts/eot/IRANSans_Medium.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/eot/IRANSans_Light.eot");
+  src: url("../fonts/eot/IRANSans_Light.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/eot/IRANSans_UltraLight.eot");
+  src: url("../fonts/eot/IRANSans_UltraLight.eot?#iefix");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/eot/IRANSans.eot");
+  src: url("../fonts/eot/IRANSans.eot?#iefix");
+  font-display: swap;
+}
+
+body {
+  font-family: IRANSans;
+  background: #f6fbff;
+  direction: rtl;
+}
+
+a{
+  color: rgb(43, 43, 43) !important;
+}
+
+ul.nav li a:hover, ul.nav li a:active {
+  color: rgb(0, 60, 255) !important;
+}
+
+ul.nav li.active a {
+  color: rgb(0, 60, 255) !important;
+}
+
+#li-faal{
+  color: #f6fbff !important;
+}
+
+#link-matlab{
+  color: #9c9c9c !important;
+}

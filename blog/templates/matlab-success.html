@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{block.super}} | ایجاد مطلب
+{% endblock title %}
+
+{% block content %}
+
+    <div
+        class="p-5 text-center bg-image"
+        style="
+        background-image: url('{% static 'media/bg1.jpg' %}');
+        height: 100%;
+        "
+    >
+    <div class="rounded-lg mask" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+
+    <div>
+    <div class="alert alert-success text-right text-center mx-auto mt-4 w-100" role="alert" dir="rtl"> مطلب شما ایجاد شد
+    <br>
+    <a href="/addmatlab/" class="my-3 btn btn-outline-success text-center mx-auto" style="width: 150px;"> ایجاد مطلب جدید </a>
+
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+{% endblock content %}
+

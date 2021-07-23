@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+{{block.super}} | نوشته های من
+{% endblock title %}
+
+{% block content %}
+
+    <style>
+        .rounded{
+            border-radius:30px !important;
+        }
+    </style>
+
+    <br>
+    <br>
+    <br>            
+        <div>
+            <h2 class="h2 col-12 text-center py-3 text-dark"><b>مطالب ارسالی شما</b></h2>
+            <br>
+                {% for user_matlab in user_matlabs %}
+
+                    <div class="container rounded shadow {{ user_matlab.title }}_{{ user_matlab.author.username }}" style="background-color: rgba(255,255,255, 1);">
+                        <div class="row">
+                        <div class="col-lg-11 col-md-10 mx-auto">
+                            <div class="post-preview" align="right">
+                                <br>
+
+                                <!-- # title matlab #-->
+                                <a href="{{ user_matlab.get_absolute_url }}">
+                                    <h3 class="post-title"><b>{{ user_matlab.title }}</b></h3>
+                                </a>
+                                <br>
+
+                                <!-- # mohtava matlab #-->
+                                <p class="post-subtitle">{{ user_matlab.mohtava|safe|truncatechars:150 }}</p>
+                                <br>
+                                <hr>
+
+                                <!-- # detail #-->  
+                                <p class="post-meta">
+                                نوشته شده توسط : {{ user_matlab.author.username }}
+                                |
+                                زمان انتشار :  {{ user_matlab.createdatetime }}
+                                <br>
+                                <br>
+                                <br>
+                                <button type="button" class="btn btn-success left">
+                                <a class="text-white"  id="edit_{{ user_matlab.title }}_{{ user_matlab.author.username }}" href="{% url 'blog:editmatlab' id=user_matlab.id %}">ویرایش مطلب</a>
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                <a class="text-white" id="delete_{{ user_matlab.title }}_{{ user_matlab.author.username }}" href="{% url 'blog:deletematlab' id=user_matlab.id %}">حذف مطلب</a>
+                                </button>
+
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+    {% endblock content %}
+
+
+

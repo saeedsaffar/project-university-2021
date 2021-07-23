@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{block.super}} | matlab
+{% endblock title %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+        <style>
+        .rounded{
+            border-radius:30px !important;
+        }
+        </style>
+
+
+
+        <div class="container rounded shadow " style="background-color: rgba(255,255,255, 1);">
+            <div class="row">
+            <div class="col-lg-11 col-md-10 mx-auto">
+                <div class="post-preview" align="right">
+                    <br>
+                    <br>
+
+                    <!-- # title matlab #-->
+                    <a href="{{ post.get_absolute_url }}">
+                        <h1 class="post-title"><b>{{ post.title }}</b></h1>
+                    </a>
+                    <br>
+                    <br>
+
+                    <!-- # mohtava matlab #-->
+                    <p class="post-subtitle">{{ post.mohtava }}</p>
+                    <br>
+                    <br>
+                    <hr>
+
+                    <!-- # detail #-->  
+                    <p class="post-meta">
+                    نوشته شده توسط : {{ post.author.username }}
+                    |
+                    زمان انتشار :  {{ post.createdatetime }}
+
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+{% endblock content %}

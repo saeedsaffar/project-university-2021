@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}
+{{block.super}} | ویرایش مطلب
+{% endblock title %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+
+<div class="container mb-5 mt-5">
+    <style>
+    </style>
+    <div class="row mx-auto">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-secondary text-white text-center"><i class="fa fa-envelope"></i> ویرایش مطلب
+                </div>
+                <div class="card-body" align="right">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-primary" type="submit">{% trans "ذخیره" %}</bottun>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+

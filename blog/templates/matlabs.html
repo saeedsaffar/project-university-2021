@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{block.super}} | جست و جو
+{% endblock title %}
+
+
+{% block content %}
+
+    <style>
+        .rounded{
+            border-radius:30px !important;
+        }
+    </style>
+
+    <br>
+    <br>
+    <div
+        class="p-5 text-center bg-image"
+        style="
+        background-image: url('{% static 'media/bg1.jpg' %}');
+        height: 34%;
+        "
+    >
+        <div class="rounded mask" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="col-md-4 mx-auto mb-5 justify-content-center align-items-center h-100">
+        <br>
+            <div class="text-white">
+            <div>
+                <form action="/matlabs/" method="POST" dir="rtl" class="my-2">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" placeholder="جست و جو در مطالب">
+                </div>
+                <div class="d-flex my-2">
+                    <button name="submit" type="submit" class="btn btn-success text-center mx-auto bg-dark" style="width: 150px;">جست و جو</button></div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+            {% if error_search %}
+    
+            <h2 class="h2 col-12 text-center py-3 " style="color:red;"><b>متاسفانه مطلبی یافت نشد :(</b></h2>
+
+            {% else %}
+
+        
+        <div>
+            <h2 class="h2 col-12 text-center py-3 text-dark"><b>نتیجه جست و جو</b></h2>
+            <br>
+                {% for matlab in searchmatlabs %}
+
+                    <div class="container rounded shadow {{ matlab.human_readable_title }}_{{ matlab.author.username }}" style="background-color: rgba(255,255,255, 1);">
+                        <div class="row">
+                        <div class="col-lg-11 col-md-10 mx-auto">
+                            <div class="post-preview" align="right">
+                                <br>
+
+                                <!-- # title matlab #-->
+                                <a href="{{ matlab.get_absolute_url }}">
+                                    <h3 class="post-title"><b>{{ matlab.title }}</b></h3>
+                                </a>
+                                <br>
+
+                                <!-- # mohtava matlab #-->
+                                <p class="post-subtitle">{{ matlab.mohtava|safe|truncatechars:150 }}</p>
+                                <br>
+                                <hr>
+
+                                <!-- # detail #-->  
+                                <p class="post-meta">
+                                نوشته شده توسط : {{ matlab.author.username }}
+                                |
+                                زمان انتشار :  {{ matlab.createdatetime }}
+
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    </div>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}

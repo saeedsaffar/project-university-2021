@@ -1,0 +1,193 @@
+{% load static %}
+
+<DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+
+    {% block meta %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock meta %}
+
+    <title>
+    {% block title %}
+    وبلاگ
+    {% endblock title %}
+    </title>
+
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% endblock css %}
+    
+</head>
+
+<body>
+
+
+    <!--#################################### header ##########################################-->
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
+        <div class="container-fluid">
+        
+        <div class="collapse navbar-collapse">
+            <ul class="nav nav-light-success nav-pills">
+                <li class="nav-item">
+                    <a id="li-faal" class="nav-link active" href="/">صفحه اصلی</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">تماس با ما</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/matlabs/">جستجو</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/panel/">پنل کاربری</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout/">خروج</a>
+                    </li>
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/">ورود</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup/">ثبت نام</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    {% endblock navbar %}
+
+    <!-- Background image -->
+
+    {% block content %}
+
+    <style>
+        .rounded{
+            border-radius:30px !important;
+        }
+    </style>
+
+    <br>
+    <br>
+
+    <div
+        class="p-5 text-center bg-image"
+        style="
+        background-image: url('{% static 'media/bg1.jpg' %}');
+        height: 95%;
+        "
+    >
+        <div class="rounded mask" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+            <p class="mb-3" style="font-size:60px;"><b>وبلاگ سعید صفار</b></p>
+            <h4 class="mb-3">بهترین از بروزترین ها</h4>
+            <button type="button" class="btn btn-outline-light">
+                <a id="link-matlab" class="dropdown-item" href="#matlabha">مطالب</a>
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--#################################### mataleb ###################################-->
+
+<br>
+<br>    
+
+        <div id="matlabha" class="d-flex justify-content-center align-items-center">
+            <div class="text">
+            <h2 class="mb-3 text-gray"><b>مطالب وبلاگ</b></h2>
+            </div>
+        </div>
+
+
+                {% for p in postha %}
+
+                    <div class="container rounded shadow " style="background-color: rgba(255,255,255, 1);">
+                        <div class="row">
+                        <div class="col-lg-11 col-md-10 mx-auto">
+                            <div class="post-preview" align="right">
+                                <br>
+
+                                <!-- # title matlab #-->
+                                <a href="{{ p.get_absolute_url }}">
+                                    <h3 class="post-title"><b>{{ p.title }}</b></h3>
+                                </a>
+                                <br>
+
+                                <!-- # mohtava matlab #-->
+                                <p class="post-subtitle">{{ p.mohtava|safe|truncatechars:150 }}</p>
+                                <br>
+                                <hr>
+
+                                <!-- # detail #-->  
+                                <p class="post-meta">
+                                نوشته شده توسط : {{ p.author.username }}
+                                |
+                                زمان انتشار :  {{ p.createdatetime }}
+
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+
+                {% endfor %}
+
+    {% endblock content %}
+
+    {% block footer %}
+    
+        <footer class="page-footer font-small bg-secondary">
+
+            <!-- Footer Elements -->
+            <div class="container">
+
+                <!-- Call to action -->
+                <ul class="list-unstyled list-inline text-center py-2">
+                <li class="list-inline-item">
+                    <h5 class="mb-1"></h5>
+                </li>
+                </ul>
+                <!-- Call to action -->
+
+            </div>
+            <!-- Footer Elements -->
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 text-white bg-dark">devepoled by SAEED SAFFAR
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+
+    {% endblock footer %}
+    
+
+
+
+
+
+    {% block js %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endblock js %}
+    
+</body>
+</html>
