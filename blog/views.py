@@ -88,8 +88,6 @@ def panel(request):
         flagg = False
     print(flagg)
     return render(request, "panel.html",{"flagg": flagg})
-    
-
 
 def addmatlab(request):
     writer, created = Group.objects.get_or_create(name='writer')
@@ -107,9 +105,7 @@ def addmatlab(request):
         matlab.save()
         return render(request, "matlab-success.html")
     return render(request, "addmatlab.html",{"flagg": flagg})
-
-
-    
+  
 def matlablistuser(request):
     user_matlabs = matlabs.objects.filter(author=request.user)
     return render(request, "usermatlabs.html",{"user_matlabs":user_matlabs})
@@ -127,7 +123,6 @@ def searchmatlabs(request):
         else:
             return render(request, "search.html", {"search_list": search_list })
     return render(request, "matlabs.html",{"searchmatlabs":searchmatlabs})
-
 
 def editmatlab(request , id=None):
     post = get_object_or_404(matlabs, id=id)
